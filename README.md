@@ -3,15 +3,40 @@ setup and configure firewall rules on linux machine using ufw filrewall
 
 UFW:Uncomplicated Firewall (UFW) is a user-friendly firewall management tool used in Linux systems, especially Ubuntu, to control incoming and outgoing network traffic. It acts as a frontend for iptables, allowing users to create and manage firewall rules using simple and easy-to-understand commands instead of complex configurations. UFW helps secure a system by filtering traffic based on ports, IP addresses, and protocols such as TCP and UDP. It supports both IPv4 and IPv6, allows setting default security policies (like denying all incoming connections), provides logging features for monitoring traffic, and includes predefined application profiles for common services like SSH and web servers. Overall, UFW makes firewall configuration simple while maintaining strong network security.
 
+# 🔐 How Firewall Filters Traffic (Concept Explanation)
+
+A firewall works as a **network traffic filter**.
+
+It checks:
+
+* Source IP
+* Destination IP
+* Port number
+* Protocol (TCP/UDP)
+
+### 🔹 How UFW Filters Traffic:
+
+1. Incoming packet arrives.
+2. Firewall checks rules from top to bottom.
+3. If rule matches → Action taken (ALLOW / DENY).
+4. If no rule matches → Default policy applies.
+
+Example:
+
+* If rule says **deny port 23**, all traffic targeting port 23 is blocked.
+* If rule says **allow port 22**, SSH traffic is permitted.
 
 
-Great 👍 since you’re using **Linux with UFW**, here’s a complete step-by-step guide you can directly use for your task report.
 
-We’ll assume you’re using **Uncomplicated Firewall (UFW)** on Ubuntu/Kali.
 
----
 
-# 🔥 Task 4: Setup and Use a Firewall on Linux (UFW)
+
+
+#  Setup and Use a Firewall on Linux (UFW)
+
+```
+apt install ufw 
+```
 
 ## ✅ Step 1: Check if UFW is Installed
 
@@ -185,30 +210,7 @@ Port 23 rule should be removed.
 
 ---
 
-# 🔐 How Firewall Filters Traffic (Concept Explanation)
 
-A firewall works as a **network traffic filter**.
 
-It checks:
 
-* Source IP
-* Destination IP
-* Port number
-* Protocol (TCP/UDP)
 
-### 🔹 How UFW Filters Traffic:
-
-1. Incoming packet arrives.
-2. Firewall checks rules from top to bottom.
-3. If rule matches → Action taken (ALLOW / DENY).
-4. If no rule matches → Default policy applies.
-
-Example:
-
-* If rule says **deny port 23**, all traffic targeting port 23 is blocked.
-* If rule says **allow port 22**, SSH traffic is permitted.
-
- 📄 Viva-ready short answers
-* 🧠 Interview explanation version
-
-Tell me which one you need 👍
