@@ -28,16 +28,6 @@ Example:
 
 
 
-
-
-
-
-#  Setup and Use a Firewall on Linux (UFW)
-
-```
-apt install ufw 
-```
-
 ## ✅ Step 1: Check if UFW is Installed
 
 ```bash
@@ -50,6 +40,7 @@ If not installed:
 ```bash
 sudo apt install ufw
 ```
+![ufw-install](screenshots/ufw-install.png)
 
 Enable UFW:
 
