@@ -54,15 +54,9 @@ sudo ufw enable
 ## ✅ Step 2: List Current Firewall Rules
 
 ```bash
-sudo ufw status verbose
+ufw status
 ```
-
-or numbered list:
-
-```bash
-sudo ufw status numbered
-```
-![ufw-install](screenshots/ufw-status.png)
+![ufw-install](screenshots/list-rule.png)
 
 This shows:
 
