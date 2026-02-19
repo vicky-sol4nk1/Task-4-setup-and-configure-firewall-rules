@@ -62,7 +62,7 @@ or numbered list:
 ```bash
 sudo ufw status numbered
 ```
-![ufw-install](screenshots/install-ufw.png)
+![ufw-install](screenshots/ufw-status.png)
 
 This shows:
 
