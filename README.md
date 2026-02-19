@@ -43,6 +43,7 @@ apt install ufw
 ```bash
 sudo ufw status
 ```
+![ufw-status](images/proftpd-exploit.png)
 
 If not installed:
 
