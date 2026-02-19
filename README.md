@@ -40,13 +40,14 @@ If not installed:
 ```bash
 sudo apt install ufw
 ```
-![ufw-install](screenshots/ufw-install.png)
+![ufw-install](screenshots/install-ufw.png)
 
 Enable UFW:
 
 ```bash
 sudo ufw enable
 ```
+![ufw-install](screenshots/ufw-enables.png)
 
 ---
 
@@ -61,6 +62,7 @@ or numbered list:
 ```bash
 sudo ufw status numbered
 ```
+![ufw-install](screenshots/install-ufw.png)
 
 This shows:
 
@@ -69,92 +71,70 @@ This shows:
 * Allowed/blocked ports
 
 ---
-
-## ✅ Step 3: Block Inbound Traffic on Port 23 (Telnet)
-
-Port **23** is used for Telnet (insecure protocol).
-
-Add rule:
-
-```bash
-sudo ufw deny 23
-```
-
-Check again:
-
-```bash
-sudo ufw status numbered
-```
-
-You should see:
-
-```
-23 DENY Anywhere
-```
-
----
-
-## ✅ Step 4: Test the Rule
-
-### 🔹 Local Test:
-
-Install telnet if not installed:
-
-```bash
-sudo apt install telnet
-```
-
-Try connecting:
-
-```bash
-telnet localhost 23
-```
-
-Expected Result:
-Connection should fail (blocked by firewall).
-
-### 🔹 Remote Test (From another machine):
-
-```bash
-telnet <your-ip> 23
-```
-
-Connection should timeout or refuse.
-
----
-
-## ✅ Step 5: Allow SSH (Port 22)
-
-If you're on Linux and using SSH, allow port 22:
+## ✅ Step 3: Add rule for allow port 22(sssh) trafic 22 (ssh)
 
 ```bash
 sudo ufw allow 22
 ```
+![ssh-allow-rulel](screenshots/allow-22.png)
 
-OR
+## ✅ Step 4: Block Inbound Traffic on Port 22 (ssh)
+
+Port **22** is used for secure remote shell connection (secure protocol).
+
+Add rule:
 
 ```bash
-sudo ufw allow ssh
+sudo ufw deny 22
+```
+![deny-rule](screenshots/ssh-deny.png)
+
+
+
+You should see:
+
+```
+22 DENY Anywhere
 ```
 
-Check status:
+---
+
+## ✅ Step 5: Test the Rule
+
+### 🔹 Local Test:
+
+Try connecting:
+
+```bash
+ssh prime@192.168.1.85
+```
+![test-deny-rule](screenshots/ssh-deny-con.png)
+
+
+
+
+
+
+
+
+
+## ✅ Step 6: Remove the Test Block Rule (Restore State): we can two in two way first in using rule number and second is extact rule 
+
+ ## Method 1:directly when we know the rule :
+
+```bash
+sudo ufw delete deny 21
+```
+
+Verify again:
 
 ```bash
 sudo ufw status
 ```
 
-You should see:
+![delete-rule](screenshots/delete-rule-ufw.png)
 
-```
-22 ALLOW Anywhere
-```
-
-⚠️ Important: Always allow SSH before enabling firewall on remote server, otherwise you may lock yourself out.
-
----
-
-## ✅ Step 6: Remove the Test Block Rule (Restore State)
-
+## method 2: 
 First check rule number:
 
 ```bash
@@ -173,35 +153,44 @@ Delete rule:
 sudo ufw delete 1
 ```
 
-OR directly:
 
-```bash
-sudo ufw delete deny 23
-```
-
-Verify again:
-
-```bash
-sudo ufw status
-```
 
 Port 23 rule should be removed.
 
 ---
 
-# 📄 Documentation Summary (You Can Submit This)
+# 📄 Documentation Summary
 
 ### Commands Used:
 
 * `sudo ufw enable`
 * `sudo ufw status verbose`
-* `sudo ufw deny 23`
-* `ssh username@ip`
 * `sudo ufw allow 22`
+* `ssh username@ip`
+* `sudo ufw deny 22`
 * `sudo ufw delete deny 23`
 
 ---
 
+
+## 🔐 Conclusion
+
+In this task, we successfully set up and configured firewall rules on a Linux machine using **UFW (Uncomplicated Firewall)**. UFW makes firewall management simple by providing easy commands instead of complex iptables configurations.
+
+We performed the following:
+
+* Checked UFW status and enabled it.
+* Viewed current firewall rules.
+* Allowed SSH traffic on port 22.
+* Blocked inbound traffic on port 22 to test security control.
+* Verified the rule by attempting an SSH connection.
+* Removed the test rule to restore normal configuration.
+
+Through this practical implementation, we understood how a firewall filters network traffic based on ports, IP addresses, and protocols. We also learned how default policies and rule order affect traffic filtering.
+
+Overall, UFW provides a simple yet powerful way to secure a Linux system by controlling incoming and outgoing connections, helping protect the system from unauthorized access and network-based attacks.
+
+✅ Task Completed Successfully.
 
 
 
